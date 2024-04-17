@@ -152,6 +152,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/17/%E9%93%BE%E6%8E%A5%E9%A2%84%E6%B5%8B%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Carrot">
+      <meta itemprop="description" content="Ah look at all the lonely people">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kingdom of Carrot Flowers">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/17/%E9%93%BE%E6%8E%A5%E9%A2%84%E6%B5%8B%E4%BB%BB%E5%8A%A1%E7%9A%84%E6%95%B0%E6%8D%AE%E9%9B%86%E5%88%92%E5%88%86/" class="post-title-link" itemprop="url">链接预测任务的数据集划分</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-17 21:40:49 / 修改时间：21:40:39" itemprop="dateCreated datePublished" datetime="2024-04-17T21:40:49+08:00">2024-04-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><img src="C:\Users\86183\AppData\Roaming\Typora\typora-user-images\image-20240416152639191.png" alt="image-20240416152639191"></p>
+<ul>
+<li><p>train的message edge和supervision_pos_edge可以相同也可以不同，在SEAL中二者不同，在GAE中二者相同。</p>
+</li>
+<li><p>train，val，test的supervision&#x2F;evaluate必须不同，否则会数据泄露。</p>
+</li>
+<li><p>一般默认的数据集分割方法</p>
+<ul>
+<li><p><strong>val_message&#x3D;train_message + train_supervision_pos_edge</strong>		如果后两者相同，则和三者均相等</p>
+</li>
+<li><p><strong>test_message&#x3D;train_message+train_supervision_pos_edge+val_evaluate_pos_edge</strong></p>
+</li>
+</ul>
+</li>
+<li><p>数据集划分中的比例是指各部分supervision&#x2F;evaluate的比例</p>
+</li>
+<li><p>是否具有train_neg_edge?</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/04/03/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84embedding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -235,7 +321,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/03/30/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E8%83%A1%E8%90%9D%E5%8D%9C%E8%8A%B1%E7%8E%8B%E5%9B%BD/" class="post-title-link" itemprop="url">欢迎欢迎来到胡萝卜花王国</a>
+            <a href="/2024/03/30/%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E8%83%A1%E8%90%9D%E5%8D%9C%E8%8A%B1%E7%8E%8B%E5%9B%BD/" class="post-title-link" itemprop="url">欢迎来到胡萝卜花王国</a>
         </h2>
 
         <div class="post-meta">
@@ -252,7 +338,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-03 14:22:55" itemprop="dateModified" datetime="2024-04-03T14:22:55+08:00">2024-04-03</time>
+                <time title="修改时间：2024-04-17 21:40:50" itemprop="dateModified" datetime="2024-04-17T21:40:50+08:00">2024-04-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -360,14 +446,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
