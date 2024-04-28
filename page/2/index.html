@@ -586,7 +586,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-24 20:58:33" itemprop="dateModified" datetime="2024-04-24T20:58:33+08:00">2024-04-24</time>
+                <time title="修改时间：2024-04-27 17:51:35" itemprop="dateModified" datetime="2024-04-27T17:51:35+08:00">2024-04-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -611,25 +611,32 @@
       
           <p><img src="/images/1.png" alt="图片"></p>
 <ul>
-<li><p>train的message edge和supervision_pos_edge可以相同也可以不同，在SEAL中二者不同，在GAE中二者相同。</p>
-</li>
-<li><p>train，val，test的supervision&#x2F;evaluate必须不同，否则会数据泄露。</p>
-</li>
-<li><p>一般默认的数据集分割方法</p>
+<li><p>理论上的数据集分割方法</p>
 <ul>
-<li><p><strong>val_message&#x3D;train_message + train_supervision_pos_edge</strong>		如果后两者相同，则和三者均相等</p>
+<li><strong>val_message&#x3D;train_message + train_supervision_pos</strong>		</li>
+<li><strong>test_message&#x3D;train_message+train_supervision_pos+val_evaluate_pos</strong></li>
+</ul>
 </li>
-<li><p><strong>test_message&#x3D;train_message+train_supervision_pos_edge+val_evaluate_pos_edge</strong></p>
+<li><p>实际操作中往往采用的分割方法</p>
+<ul>
+<li><p><strong>train_message&#x3D;train_supervision_pos</strong>   后者分批次计算</p>
+</li>
+<li><p><strong>test_message&#x3D;val_message&#x3D;train_message</strong></p>
+</li>
+<li><p>对于部分数据集如ogb-collab,使用use_valedges_as_input策略，有</p>
+<p><strong>test_message&#x3D;train_message+val_evaluate_pos</strong></p>
 </li>
 </ul>
 </li>
-<li><p>数据集划分中的比例是指各部分supervision&#x2F;evaluate的比例。</p>
+<li><p>train_message和train_supervision_pos可以相同也可以不同，例如在SEAL中二者不同，在GAE中二者相同。</p>
 </li>
-<li><p>train_neg_edge可能是去除了所有其他部分边之后再采样所得。</p>
+<li><p>train，val，test的supervision&#x2F;evaluate必须不同，否则会数据泄露。</p>
 </li>
-<li><p>SEAL中提出了negative injection策略，是指在获得节点嵌入的过程中，使用训练集中的正例和负例共同构建节点嵌入，而不是单独使用训练集正例，例如通过在包含有训练集的正负边上的随机游走过程。</p>
+<li><p>数据集划分比例是指各部分supervision&#x2F;evaluate的比例。</p>
 </li>
-<li><p>NCNC中提出了TLR(Target Link Remove)策略，是指在train的message edge和supervision_pos_edge重合的情况下，去除掉supervision_pos_edge边，使其不参与传播过程，仅参与监督过程，使其和test的传播&#x2F;评估逻辑一致。SEAL也使用了类似的方法，使得message edge和supervision_pos_edge分离。</p>
+<li><p>NCNC中提出了TLR (Target Link Remove)策略，是指在train_message和train_supervision_pos重合的情况下，在train_message中去掉train_supervision_pos，使其不参与传播过程，仅参与监督过程，使其与test的传播和评估逻辑一致。SEAL也使用了类似的方法，使二者相分离。</p>
+</li>
+<li><p>SEAL中提出了negative injection策略，是指在获得节点嵌入的过程中，使用训练集中的正例和负例共同构建节点嵌入，而不是单独使用训练集正例，例如在训练集的正负边上的随机游走获得节点嵌入的过程。</p>
 </li>
 </ul>
 
